@@ -17,15 +17,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up C++ environment
-      uses: actions/setup-cpp@v1
-      with:
-        compiler: g++
+    - name: Set up GCC
+      run: sudo apt-get update && sudo apt-get install -y g++
 
     - name: Build
-      run: |
-        g++ -o main main.cpp
+      run: g++ -o main main.cpp
 
     - name: Run
-      run: |
-        ./main
+      run: ./main
+
