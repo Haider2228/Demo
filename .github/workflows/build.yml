@@ -1,0 +1,31 @@
+# .github/workflows/build.yml
+name: C++ Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up C++ environment
+      uses: actions/setup-cpp@v1
+      with:
+        compiler: g++
+
+    - name: Build
+      run: |
+        g++ -o main main.cpp
+
+    - name: Run
+      run: |
+        ./main
